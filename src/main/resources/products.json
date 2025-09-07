@@ -1,0 +1,41 @@
+[
+    {
+        "id": "1",
+        "name": "Smartphone Galaxy S21",
+        "description": "Smartphone Samsung Galaxy S21 5G 128GB",
+        "price": 3999.99,
+        "brand": "Samsung",
+        "category": "Eletrônicos",
+        "stock": 15,
+        "images": [
+            "galaxy-s21-1.jpg",
+            "galaxy-s21-2.jpg"
+        ],
+        "specifications": {
+            "color": "Preto",
+            "storage": "128GB",
+            "ram": "8GB",
+            "screen": "6.2 polegadas"
+        }
+    },
+    {
+        "id": "2",
+        "name": "Notebook Dell Inspiron",
+        "description": "Notebook Dell Inspiron 15 Intel Core i5",
+        "price": 4599.99,
+        "brand": "Dell",
+        "category": "Computadores",
+        "stock": 8,
+        "images": [
+            "dell-inspiron-1.jpg",
+            "dell-inspiron-2.jpg"
+        ],
+        "specifications": {
+            "processor": "Intel Core i5",
+            "storage": "256GB SSD",
+            "ram": "8GB",
+            "screen": "15.6 polegadas"
+        }
+    }
+]
+
