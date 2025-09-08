@@ -16,7 +16,9 @@
             "storage": "128GB",
             "ram": "8GB",
             "screen": "6.2 polegadas"
-        }
+        },
+        "sellerId": "Loja Tech",
+        "rating": 5
     },
     {
         "id": "2",
@@ -35,7 +37,8 @@
             "storage": "256GB SSD",
             "ram": "8GB",
             "screen": "15.6 polegadas"
-        }
+        },
+        "sellerId": "Loja Top",
+        "rating": 3
     }
 ]
-
