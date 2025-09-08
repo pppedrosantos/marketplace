@@ -1,4 +1,4 @@
-package br.com.productshop.marketplace_api.presentation;
+package br.com.productshop.marketplace_api.resource;
 
 import br.com.productshop.marketplace_api.application.exception.ProductNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
-public class GlobalExceptionHandler {
+public class ResourceExceptionHandler {
 
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleProductNotFound(ProductNotFoundException ex) {

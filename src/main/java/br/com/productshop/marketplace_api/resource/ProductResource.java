@@ -1,4 +1,4 @@
-package br.com.productshop.marketplace_api.presentation;
+package br.com.productshop.marketplace_api.resource;
 
 import br.com.productshop.marketplace_api.application.ProductService;
 import br.com.productshop.marketplace_api.application.dto.ProductResponse;
@@ -17,7 +17,7 @@ import java.util.List;
 @Tag(name = "Products", description = "API para gerenciamento de produtos")
 @CrossOrigin(origins = "*")
 @RequiredArgsConstructor
-public class ProductController {
+public class ProductResource {
     private final ProductService productService;
     private final FindProductUseCase findProductUseCase;
 
