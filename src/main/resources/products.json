@@ -19,6 +19,7 @@
         },
         "sellerId": "Loja Tech",
         "rating": 5,
+        "totalReviews": 2,
         "questions": [
             {
                 "id": "q1",
@@ -37,6 +38,28 @@
                 "createdAt": "2025-09-02T14:20:00",
                 "answeredAt": "2025-09-02T15:00:00",
                 "answered": true
+            }
+        ],
+        "reviews": [
+            {
+                "id": "r1",
+                "userId": "user789",
+                "userName": "João Silva",
+                "rating": 5,
+                "comment": "Camera incrível, bateria dura o dia todo e o desempenho é excelente.",
+                "reviewDate": "2025-08-15T14:30:00",
+                "verifiedPurchase": true,
+                "likes": 12
+            },
+            {
+                "id": "r2",
+                "userId": "user101",
+                "userName": "Maria Santos",
+                "rating": 5,
+                "comment": "Superou minhas expectativas. Recomendo!",
+                "reviewDate": "2025-08-20T16:45:00",
+                "verifiedPurchase": true,
+                "likes": 8
             }
         ]
     },
@@ -59,7 +82,8 @@
             "screen": "15.6 polegadas"
         },
         "sellerId": "Loja Top",
-        "rating": 3,
+        "rating": 4.3,
+        "totalReviews": 3,
         "questions": [
             {
                 "id": "q3",
@@ -78,15 +102,197 @@
                 "createdAt": "2025-09-04T16:30:00",
                 "answeredAt": "2025-09-04T17:00:00",
                 "answered": true
+            }
+        ],
+        "reviews": [
+            {
+                "id": "r3",
+                "userId": "user303",
+                "userName": "Ana Oliveira",
+                "rating": 5,
+                "comment": "Perfeito para home office e reuniões online. SSD muito rápido!",
+                "reviewDate": "2025-08-10T11:20:00",
+                "verifiedPurchase": true,
+                "likes": 20
             },
             {
+                "id": "r4",
+                "userId": "user404",
+                "userName": "Carlos Mendes",
+                "rating": 4,
+                "comment": "Boa máquina para o dia a dia, mas poderia ter mais RAM.",
+                "reviewDate": "2025-08-12T15:30:00",
+                "verifiedPurchase": true,
+                "likes": 15
+            },
+            {
+                "id": "r5",
+                "userId": "user505",
+                "userName": "Luciana Ferreira",
+                "rating": 4,
+                "comment": "Boa tela, bom processador, apenas o touchpad que às vezes falha.",
+                "reviewDate": "2025-08-18T13:45:00",
+                "verifiedPurchase": true,
+                "likes": 8
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "name": "Apple AirPods Pro 2",
+        "description": "Fone de ouvido sem fio com cancelamento de ruído ativo",
+        "price": "1899.99",
+        "brand": "Apple",
+        "category": "Eletrônicos",
+        "stock": 10,
+        "images": [
+            "airpods-pro-1.jpg",
+            "airpods-pro-2.jpg"
+        ],
+        "specifications": {
+            "color": "Branco",
+            "bluetooth": "5.3",
+            "battery": "6h de reprodução",
+            "charging": "MagSafe e Lightning"
+        },
+        "sellerId": "Apple Store",
+        "rating": 4.8,
+        "totalReviews": 3,
+        "questions": [
+            {
                 "id": "q5",
-                "question": "A memória RAM é expansível?",
-                "answer": "Sim, suporta até 32GB de RAM com dois slots disponíveis",
-                "userId": "user202",
-                "createdAt": "2025-09-05T11:20:00",
-                "answeredAt": "2025-09-05T13:15:00",
+                "question": "É original Apple?",
+                "answer": "Sim, produto 100% original com nota fiscal e garantia Apple Brasil.",
+                "userId": "user567",
+                "createdAt": "2025-09-05T08:30:00",
+                "answeredAt": "2025-09-05T09:15:00",
                 "answered": true
+            },
+            {
+                "id": "q6",
+                "question": "Funciona com Android?",
+                "answer": "Sim, funciona com Android, mas algumas funcionalidades são exclusivas para iPhone.",
+                "userId": "user678",
+                "createdAt": "2025-09-06T10:20:00",
+                "answeredAt": "2025-09-06T11:00:00",
+                "answered": true
+            }
+        ],
+        "reviews": [
+            {
+                "id": "r6",
+                "userId": "user707",
+                "userName": "Rafael Costa",
+                "rating": 5,
+                "comment": "Cancelamento de ruído impressionante, áudio cristalino.",
+                "reviewDate": "2025-09-01T14:30:00",
+                "verifiedPurchase": true,
+                "likes": 25
+            },
+            {
+                "id": "r7",
+                "userId": "user808",
+                "userName": "Paula Lima",
+                "rating": 5,
+                "comment": "Perfeito para calls de trabalho, isola muito bem o som ambiente.",
+                "reviewDate": "2025-09-02T16:45:00",
+                "verifiedPurchase": true,
+                "likes": 18
+            },
+            {
+                "id": "r8",
+                "userId": "user909",
+                "userName": "Marcos Silva",
+                "rating": 4,
+                "comment": "Excelente, só achei o preço um pouco salgado.",
+                "reviewDate": "2025-09-03T11:20:00",
+                "verifiedPurchase": true,
+                "likes": 12
+            }
+        ]
+    },
+    {
+        "id": "4",
+        "name": "Jaqueta Corta-Vento Nike Windrunner",
+        "description": "Jaqueta esportiva masculina impermeável",
+        "price": "299.99",
+        "brand": "Nike",
+        "category": "Vestuário",
+        "stock": 20,
+        "images": [
+            "nike-jacket-1.jpg",
+            "nike-jacket-2.jpg",
+            "nike-jacket-3.jpg"
+        ],
+        "specifications": {
+            "material": "100% Poliéster",
+            "tipo": "Corta-vento",
+            "gênero": "Masculino",
+            "tecnologia": "Dri-FIT"
+        },
+        "sellerId": "Nike Store",
+        "rating": 4.7,
+        "totalReviews": 4,
+        "questions": [
+            {
+                "id": "q7",
+                "question": "Qual a diferença do tamanho M para o G?",
+                "answer": "O tamanho G tem 4cm a mais na largura e 5cm no comprimento em relação ao M.",
+                "userId": "user111",
+                "createdAt": "2025-09-04T15:30:00",
+                "answeredAt": "2025-09-04T16:15:00",
+                "answered": true
+            },
+            {
+                "id": "q8",
+                "question": "A jaqueta é impermeável?",
+                "answer": "Sim, possui tecnologia water-repellent que repele água leve e chuva.",
+                "userId": "user222",
+                "createdAt": "2025-09-05T09:40:00",
+                "answeredAt": "2025-09-05T10:20:00",
+                "answered": true
+            }
+        ],
+        "reviews": [
+            {
+                "id": "r9",
+                "userId": "user333",
+                "userName": "Ricardo Oliveira",
+                "rating": 5,
+                "comment": "Excelente para corrida, protege bem do vento e garoa.",
+                "reviewDate": "2025-09-01T08:30:00",
+                "verifiedPurchase": true,
+                "likes": 30
+            },
+            {
+                "id": "r10",
+                "userId": "user444",
+                "userName": "Fernando Santos",
+                "rating": 5,
+                "comment": "Acabamento impecável, veste muito bem.",
+                "reviewDate": "2025-09-02T14:20:00",
+                "verifiedPurchase": true,
+                "likes": 22
+            },
+            {
+                "id": "r11",
+                "userId": "user555",
+                "userName": "Gabriel Martins",
+                "rating": 4,
+                "comment": "Ótima jaqueta, só achei o zíper um pouco duro no início.",
+                "reviewDate": "2025-09-03T11:15:00",
+                "verifiedPurchase": true,
+                "likes": 15
+            },
+            {
+                "id": "r12",
+                "userId": "user666",
+                "userName": "Lucas Pereira",
+                "rating": 5,
+                "comment": "Leve e confortável, perfeita para atividades ao ar livre.",
+                "reviewDate": "2025-09-04T16:40:00",
+                "verifiedPurchase": true,
+                "likes": 18
             }
         ]
     }

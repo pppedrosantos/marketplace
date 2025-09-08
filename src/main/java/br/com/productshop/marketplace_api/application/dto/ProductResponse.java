@@ -25,5 +25,7 @@ public class ProductResponse {
     private Map<String, String> specifications;
     private String sellerId;
     private Double rating;
+    private Integer totalReviews;
     private List<QuestionResponse> questions;
+    private List<ReviewResponse> reviews;
 }

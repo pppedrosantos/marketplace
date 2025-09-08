@@ -1,8 +1,7 @@
 package br.com.productshop.marketplace_api.resource;
 
-import br.com.productshop.marketplace_api.application.ProductService;
 import br.com.productshop.marketplace_api.application.dto.ProductResponse;
-import br.com.productshop.marketplace_api.application.usecase.FindProductUseCase;
+import br.com.productshop.marketplace_api.application.usecase.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -18,8 +17,12 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class ProductResource {
-    private final ProductService productService;
+    private final ListProductsUseCase listProductsUseCase;
     private final FindProductUseCase findProductUseCase;
+    private final FindSimilarProductsUseCase findSimilarProductsUseCase;
+    private final FindByCategoryUseCase findByCategoryUseCase;
+    private final FindBySellerUseCase findBySellerUseCase;
+    private final SearchProductsUseCase searchProductsUseCase;
 
     @GetMapping
     @Operation(
@@ -28,7 +31,7 @@ public class ProductResource {
     )
     @ApiResponse(responseCode = "200", description = "Lista de produtos recuperada com sucesso")
     public ResponseEntity<List<ProductResponse>> getAllProducts() {
-        return ResponseEntity.ok(productService.findAll());
+        return ResponseEntity.ok(listProductsUseCase.execute());
     }
 
     @GetMapping("/{id}")
@@ -51,7 +54,7 @@ public class ProductResource {
     public ResponseEntity<List<ProductResponse>> getSimilarProducts(
             @PathVariable String id,
             @RequestParam(defaultValue = "5") int limit) {
-        return ResponseEntity.ok(productService.findSimilarProducts(id, limit));
+        return ResponseEntity.ok(findSimilarProductsUseCase.execute(id, limit));
     }
 
     @GetMapping("/category/{category}")
@@ -61,7 +64,7 @@ public class ProductResource {
     )
     @ApiResponse(responseCode = "200", description = "Lista de produtos da categoria encontrada com sucesso")
     public ResponseEntity<List<ProductResponse>> getProductsByCategory(@PathVariable String category) {
-        return ResponseEntity.ok(productService.findByCategory(category));
+        return ResponseEntity.ok(findByCategoryUseCase.execute(category));
     }
 
     @GetMapping("/seller/{sellerId}/products")
@@ -73,7 +76,7 @@ public class ProductResource {
     public ResponseEntity<List<ProductResponse>> getSellerProducts(
             @PathVariable String sellerId,
             @RequestParam(required = false) String excludeProductId) {
-        return ResponseEntity.ok(productService.findBySellerWithoutProduct(sellerId, excludeProductId));
+        return ResponseEntity.ok(findBySellerUseCase.execute(sellerId, excludeProductId));
     }
 
     @GetMapping("/search")
@@ -87,6 +90,6 @@ public class ProductResource {
             @RequestParam(required = false) Double maxPrice,
             @RequestParam(required = false) String category,
             @RequestParam(required = false) Double minRating) {
-        return ResponseEntity.ok(productService.findWithFilters(minPrice, maxPrice, category, minRating));
+        return ResponseEntity.ok(searchProductsUseCase.execute(minPrice, maxPrice, category, minRating));
     }
 }
