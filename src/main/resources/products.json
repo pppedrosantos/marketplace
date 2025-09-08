@@ -3,7 +3,7 @@
         "id": "1",
         "name": "Smartphone Galaxy S21",
         "description": "Smartphone Samsung Galaxy S21 5G 128GB",
-        "price": 3999.99,
+        "price": "3999.99",
         "brand": "Samsung",
         "category": "Eletrônicos",
         "stock": 15,
@@ -18,13 +18,33 @@
             "screen": "6.2 polegadas"
         },
         "sellerId": "Loja Tech",
-        "rating": 5
+        "rating": 5,
+        "questions": [
+            {
+                "id": "q1",
+                "question": "O celular vem com carregador na caixa?",
+                "answer": "Não, o carregador é vendido separadamente conforme política da Samsung.",
+                "userId": "user123",
+                "createdAt": "2025-09-01T10:30:00",
+                "answeredAt": "2025-09-01T11:15:00",
+                "answered": true
+            },
+            {
+                "id": "q2",
+                "question": "Tem garantia de fábrica?",
+                "answer": "Sim, 1 ano de garantia oficial Samsung Brasil",
+                "userId": "user456",
+                "createdAt": "2025-09-02T14:20:00",
+                "answeredAt": "2025-09-02T15:00:00",
+                "answered": true
+            }
+        ]
     },
     {
         "id": "2",
         "name": "Notebook Dell Inspiron",
         "description": "Notebook Dell Inspiron 15 Intel Core i5",
-        "price": 4599.99,
+        "price": "4599.99",
         "brand": "Dell",
         "category": "Computadores",
         "stock": 8,
@@ -39,6 +59,35 @@
             "screen": "15.6 polegadas"
         },
         "sellerId": "Loja Top",
-        "rating": 3
+        "rating": 3,
+        "questions": [
+            {
+                "id": "q3",
+                "question": "O notebook acompanha Windows instalado?",
+                "answer": "Sim, vem com Windows 11 Home instalado e ativado.",
+                "userId": "user789",
+                "createdAt": "2025-09-03T09:00:00",
+                "answeredAt": "2025-09-03T09:45:00",
+                "answered": true
+            },
+            {
+                "id": "q4",
+                "question": "Possui garantia internacional?",
+                "answer": "Sim, 1 ano de garantia internacional Dell",
+                "userId": "user101",
+                "createdAt": "2025-09-04T16:30:00",
+                "answeredAt": "2025-09-04T17:00:00",
+                "answered": true
+            },
+            {
+                "id": "q5",
+                "question": "A memória RAM é expansível?",
+                "answer": "Sim, suporta até 32GB de RAM com dois slots disponíveis",
+                "userId": "user202",
+                "createdAt": "2025-09-05T11:20:00",
+                "answeredAt": "2025-09-05T13:15:00",
+                "answered": true
+            }
+        ]
     }
 ]

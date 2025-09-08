@@ -9,6 +9,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -64,8 +65,8 @@ public class JsonProductRepository implements IProductRepository {
     @Override
     public List<Product> findWithFilters(Double minPrice, Double maxPrice, String category, Double minRating) {
         return products.stream()
-                .filter(p -> minPrice == null || p.getPrice() >= minPrice)
-                .filter(p -> maxPrice == null || p.getPrice() <= maxPrice)
+                .filter(p -> minPrice == null || p.getPrice().compareTo(BigDecimal.valueOf(minPrice)) >= 0)
+                .filter(p -> maxPrice == null || p.getPrice().compareTo(BigDecimal.valueOf(maxPrice)) <= 0)
                 .filter(p -> category == null || p.getCategory().equalsIgnoreCase(category))
                 .filter(p -> minRating == null || p.getRating() >= minRating)
                 .collect(Collectors.toList());
