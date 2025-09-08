@@ -1,6 +1,7 @@
 package br.com.productshop.marketplace_api.application;
 
 import br.com.productshop.marketplace_api.application.dto.ProductResponse;
+import br.com.productshop.marketplace_api.application.exception.CategoryNotFoundException;
 import br.com.productshop.marketplace_api.application.usecase.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,10 +11,10 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -144,5 +145,47 @@ class ProductServiceTest {
         assertNotNull(result);
         assertEquals(2, result.size());
         verify(searchProductsUseCase).execute(minPrice, maxPrice, category, minRating);
+    }
+
+    @Test
+    void shouldThrowCategoryNotFoundWhenCategoryHasNoProducts() {
+        // Arrange
+        String category = "InvalidCategory";
+        when(findByCategoryUseCase.execute(category)).thenReturn(Collections.emptyList());
+
+        // Act & Assert
+        assertThrows(CategoryNotFoundException.class, () -> productService.findByCategory(category));
+        verify(findByCategoryUseCase).execute(category);
+    }
+
+    @Test
+    void shouldThrowCategoryNotFoundWhenSearchingWithInvalidCategory() {
+        // Arrange
+        String category = "InvalidCategory";
+        when(findByCategoryUseCase.execute(category)).thenReturn(Collections.emptyList());
+
+        // Act & Assert
+        assertThrows(CategoryNotFoundException.class, () ->
+            productService.searchWithFilters(10.0, 100.0, category, 4.0));
+        verify(findByCategoryUseCase).execute(category);
+    }
+
+    @Test
+    void shouldNotValidateCategoryWhenSearchingWithNullCategory() {
+        // Arrange
+        Double minPrice = 10.0;
+        Double maxPrice = 100.0;
+        Double minRating = 4.0;
+        when(searchProductsUseCase.execute(minPrice, maxPrice, null, minRating))
+            .thenReturn(productList);
+
+        // Act
+        List<ProductResponse> result = productService.searchWithFilters(minPrice, maxPrice, null, minRating);
+
+        // Assert
+        assertNotNull(result);
+        assertEquals(productList, result);
+        verify(findByCategoryUseCase, never()).execute(any());
+        verify(searchProductsUseCase).execute(minPrice, maxPrice, null, minRating);
     }
 }

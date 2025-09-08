@@ -1,5 +1,7 @@
 package br.com.productshop.marketplace_api.resource;
 
+import br.com.productshop.marketplace_api.application.exception.CategoryNotFoundException;
+import br.com.productshop.marketplace_api.application.exception.InvalidFilterException;
 import br.com.productshop.marketplace_api.application.exception.ProductNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
@@ -10,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class ResourceExceptionHandlerTest {
 
-    private final ResourceExceptionHandler exceptionHandler = new ResourceExceptionHandler();
+    private final ResourceExceptionHandler handler = new ResourceExceptionHandler();
 
     @Test
     void shouldHandleProductNotFoundException() {
@@ -20,7 +22,7 @@ class ResourceExceptionHandlerTest {
         String expectedMessage = "Produto não encontrado com ID: " + productId;
 
         // Act
-        ResponseEntity<ErrorResponse> response = exceptionHandler.handleProductNotFound(exception);
+        ResponseEntity<ErrorResponse> response = handler.handleProductNotFound(exception);
 
         // Assert
         assertNotNull(response);
@@ -31,29 +33,64 @@ class ResourceExceptionHandlerTest {
     }
 
     @Test
-    void shouldHandleGenericExceptionWithMessage() {
+    void shouldHandleCategoryNotFoundException() {
         // Arrange
-        String errorMessage = "Erro específico";
-        Exception exception = new RuntimeException(errorMessage);
+        String categoryName = "Eletrônicos";
+        CategoryNotFoundException exception = new CategoryNotFoundException(categoryName);
+        String expectedMessage = "Categoria não encontrada: " + categoryName;
 
         // Act
-        ResponseEntity<ErrorResponse> response = exceptionHandler.handleGenericException(exception);
+        ResponseEntity<ErrorResponse> response = handler.handleCategoryNotFound(exception);
 
         // Assert
         assertNotNull(response);
-        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
         assertNotNull(response.getBody());
-        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR.value(), response.getBody().status());
+        assertEquals(HttpStatus.NOT_FOUND.value(), response.getBody().status());
+        assertEquals(expectedMessage, response.getBody().message());
+    }
+
+    @Test
+    void shouldHandleInvalidFilterException() {
+        // Arrange
+        String errorMessage = "Preço mínimo não pode ser negativo";
+        InvalidFilterException exception = new InvalidFilterException(errorMessage);
+
+        // Act
+        ResponseEntity<ErrorResponse> response = handler.handleInvalidFilter(exception);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        assertNotNull(response.getBody());
+        assertEquals(HttpStatus.BAD_REQUEST.value(), response.getBody().status());
         assertEquals(errorMessage, response.getBody().message());
     }
 
     @Test
-    void shouldHandleGenericExceptionWithNullMessage() {
+    void shouldHandleIllegalArgumentException() {
         // Arrange
-        Exception exception = new RuntimeException();
+        String errorMessage = "ID do produto não pode ser vazio";
+        IllegalArgumentException exception = new IllegalArgumentException(errorMessage);
 
         // Act
-        ResponseEntity<ErrorResponse> response = exceptionHandler.handleGenericException(exception);
+        ResponseEntity<ErrorResponse> response = handler.handleIllegalArgument(exception);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        assertNotNull(response.getBody());
+        assertEquals(HttpStatus.BAD_REQUEST.value(), response.getBody().status());
+        assertEquals(errorMessage, response.getBody().message());
+    }
+
+    @Test
+    void shouldHandleGenericException() {
+        // Arrange
+        Exception exception = new RuntimeException("Erro qualquer");
+
+        // Act
+        ResponseEntity<ErrorResponse> response = handler.handleGenericException(exception);
 
         // Assert
         assertNotNull(response);
