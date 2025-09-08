@@ -52,6 +52,19 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
+    public ProductResponse findById(String id) {
+        return productRepository.findById(id)
+                .map(productMapper::toResponse)
+                .orElseThrow(() -> new RuntimeException("Product not found with id: " + id));
+    }
+
+    public List<ProductResponse> findBySellerId(String sellerId) {
+        return productRepository.findBySellerId(sellerId)
+                .stream()
+                .map(productMapper::toResponse)
+                .collect(Collectors.toList());
+    }
+
     /**
      * Busca outros produtos do mesmo vendedor
      * @param sellerId ID do vendedor
@@ -74,8 +87,7 @@ public class ProductService {
      * @param minRating Avaliação mínima (opcional)
      * @return Lista de produtos que atendem aos critérios dos filtros
      */
-    public List<ProductResponse> findWithFilters(Double minPrice, Double maxPrice,
-                                       String category, Double minRating) {
+    public List<ProductResponse> findWithFilters(Double minPrice, Double maxPrice, String category, Double minRating) {
         return productRepository.findWithFilters(minPrice, maxPrice, category, minRating)
                 .stream()
                 .map(productMapper::toResponse)

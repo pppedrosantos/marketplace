@@ -21,16 +21,12 @@ public class ResourceExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGenericException(Exception ex) {
+        String message = ex.getMessage() != null ? ex.getMessage() : "Erro interno do servidor";
         return ResponseEntity
             .status(HttpStatus.INTERNAL_SERVER_ERROR)
             .body(new ErrorResponse(
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                "Erro interno do servidor"
+                message
             ));
     }
-
-    private record ErrorResponse(
-        int status,
-        String message
-    ) {}
 }
