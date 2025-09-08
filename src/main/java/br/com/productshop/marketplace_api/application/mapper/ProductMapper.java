@@ -6,13 +6,20 @@ import br.com.productshop.marketplace_api.application.dto.ReviewResponse;
 import br.com.productshop.marketplace_api.domain.entity.Product;
 import br.com.productshop.marketplace_api.domain.entity.Question;
 import br.com.productshop.marketplace_api.domain.entity.Review;
+import br.com.productshop.marketplace_api.domain.service.ReviewCalculator;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;
 
 @Component
+@RequiredArgsConstructor
 public class ProductMapper {
+    private final ReviewCalculator reviewCalculator;
+
     public ProductResponse toResponse(Product product) {
+        double averageRating = reviewCalculator.calculateAverageRating(product.getReviews());
+
         return ProductResponse.builder()
                 .id(product.getId())
                 .name(product.getName())
@@ -24,8 +31,8 @@ public class ProductMapper {
                 .images(product.getImages())
                 .specifications(product.getSpecifications())
                 .sellerId(product.getSellerId())
-                .rating(product.getRating())
-                .totalReviews(product.getTotalReviews())
+                .rating(averageRating)
+                .totalReviews(product.getReviews() != null ? product.getReviews().size() : 0)
                 .questions(product.getQuestions() != null ?
                     product.getQuestions().stream()
                         .map(this::toQuestionResponse)
