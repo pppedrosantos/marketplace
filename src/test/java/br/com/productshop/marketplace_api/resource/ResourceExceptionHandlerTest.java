@@ -53,8 +53,9 @@ class ResourceExceptionHandlerTest {
     @Test
     void shouldHandleInvalidFilterException() {
         // Arrange
-        String errorMessage = "Preço mínimo não pode ser negativo";
-        InvalidFilterException exception = new InvalidFilterException(errorMessage);
+        String message = "Preço mínimo não pode ser negativo";
+        InvalidFilterException exception = new InvalidFilterException(message);
+        String expectedMessage = "Filtro inválido: " + message;
 
         // Act
         ResponseEntity<ErrorResponse> response = handler.handleInvalidFilter(exception);
@@ -64,7 +65,7 @@ class ResourceExceptionHandlerTest {
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         assertNotNull(response.getBody());
         assertEquals(HttpStatus.BAD_REQUEST.value(), response.getBody().status());
-        assertEquals(errorMessage, response.getBody().message());
+        assertEquals(expectedMessage, response.getBody().message());
     }
 
     @Test
