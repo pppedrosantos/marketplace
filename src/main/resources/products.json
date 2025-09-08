@@ -20,6 +20,26 @@
         "sellerId": "Loja Tech",
         "rating": 5,
         "totalReviews": 2,
+        "questions": [
+            {
+                "id": "q1",
+                "question": "O celular vem com carregador na caixa?",
+                "answer": "Não, o carregador é vendido separadamente conforme política da Samsung.",
+                "userId": "user123",
+                "createdAt": "2025-09-01T10:30:00",
+                "answeredAt": "2025-09-01T11:15:00",
+                "answered": true
+            },
+            {
+                "id": "q2",
+                "question": "Tem garantia de fábrica?",
+                "answer": "Sim, 1 ano de garantia oficial Samsung Brasil",
+                "userId": "user456",
+                "createdAt": "2025-09-02T14:20:00",
+                "answeredAt": "2025-09-02T15:00:00",
+                "answered": true
+            }
+        ],
         "reviews": [
             {
                 "id": "r1",
@@ -64,6 +84,26 @@
         "sellerId": "Loja Top",
         "rating": 4.3,
         "totalReviews": 3,
+        "questions": [
+            {
+                "id": "q3",
+                "question": "O notebook acompanha Windows instalado?",
+                "answer": "Sim, vem com Windows 11 Home instalado e ativado.",
+                "userId": "user789",
+                "createdAt": "2025-09-03T09:00:00",
+                "answeredAt": "2025-09-03T09:45:00",
+                "answered": true
+            },
+            {
+                "id": "q4",
+                "question": "Possui garantia internacional?",
+                "answer": "Sim, 1 ano de garantia internacional Dell",
+                "userId": "user101",
+                "createdAt": "2025-09-04T16:30:00",
+                "answeredAt": "2025-09-04T17:00:00",
+                "answered": true
+            }
+        ],
         "reviews": [
             {
                 "id": "r3",
@@ -118,6 +158,26 @@
         "sellerId": "Apple Store",
         "rating": 4.8,
         "totalReviews": 3,
+        "questions": [
+            {
+                "id": "q5",
+                "question": "É original Apple?",
+                "answer": "Sim, produto 100% original com nota fiscal e garantia Apple Brasil.",
+                "userId": "user567",
+                "createdAt": "2025-09-05T08:30:00",
+                "answeredAt": "2025-09-05T09:15:00",
+                "answered": true
+            },
+            {
+                "id": "q6",
+                "question": "Funciona com Android?",
+                "answer": "Sim, funciona com Android, mas algumas funcionalidades são exclusivas para iPhone.",
+                "userId": "user678",
+                "createdAt": "2025-09-06T10:20:00",
+                "answeredAt": "2025-09-06T11:00:00",
+                "answered": true
+            }
+        ],
         "reviews": [
             {
                 "id": "r6",
@@ -166,13 +226,33 @@
         ],
         "specifications": {
             "material": "100% Poliéster",
-            "tipo": "Corta-vento",
-            "gênero": "Masculino",
-            "tecnologia": "Dri-FIT"
+            "type": "Corta-vento",
+            "gender": "Masculino",
+            "technology": "Dri-FIT"
         },
         "sellerId": "Nike Store",
         "rating": 4.7,
         "totalReviews": 4,
+        "questions": [
+            {
+                "id": "q7",
+                "question": "Qual a diferença do tamanho M para o G?",
+                "answer": "O tamanho G tem 4cm a mais na largura e 5cm no comprimento em relação ao M.",
+                "userId": "user111",
+                "createdAt": "2025-09-04T15:30:00",
+                "answeredAt": "2025-09-04T16:15:00",
+                "answered": true
+            },
+            {
+                "id": "q8",
+                "question": "A jaqueta é impermeável?",
+                "answer": "Sim, possui tecnologia water-repellent que repele água leve e chuva.",
+                "userId": "user222",
+                "createdAt": "2025-09-05T09:40:00",
+                "answeredAt": "2025-09-05T10:20:00",
+                "answered": true
+            }
+        ],
         "reviews": [
             {
                 "id": "r9",
